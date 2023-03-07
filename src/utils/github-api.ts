@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getUsers = async (query: string) : Promise<any> => {
   let headersList = {
-     "Authorization": "token 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"
+     "Authorization": "token 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" // token doesn't work, please add a correct token
   }
 
   let reqOptions = {
