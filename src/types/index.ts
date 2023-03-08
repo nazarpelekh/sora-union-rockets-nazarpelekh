@@ -3,6 +3,7 @@ export interface iList {
 }
 
 export interface iUser {
+  id: string
   login: string,
   avatar_url: string
 }
@@ -12,9 +13,9 @@ export interface FormValues {
 };
 
 export interface iRocket {
-  id: string
+  key: number
   title: string
-  rocketName: string
+  name: string
   description: string
-  githubUsername: string
+  github: string
 }

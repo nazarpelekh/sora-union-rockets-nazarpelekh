@@ -5,7 +5,7 @@ import { db } from '../../firebase'
 export default function useFetchRockets() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
-    const [data, setData]:any = useState()
+    const [data, setData]:React.SetStateAction<any> = useState()
 
     useEffect(() => {
       async function fetchData() {

@@ -5,9 +5,11 @@ import { doc, setDoc, getDoc, deleteField } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import useFetchRockets from '@/utils/fetchData'
 
+import { iRocket } from '@/types'
+
 import shuttle from 'public/shuttle.jpg'
 
-export default function Card({ title, name, description, github, setUpdate }: any) {
+export default function Card({ title, name, description, github }: iRocket) {
 
   const [gitUser, setGitUser] = useState([] as any)
   const { loading, error, data, setData } = useFetchRockets()
@@ -24,16 +26,13 @@ export default function Card({ title, name, description, github, setUpdate }: an
     setData({ ...newObj })
   }
 
-  {
-    github &&
-      useEffect(() => {
-        const git = async () => {
-          const user = await getUsers(github);
-          setGitUser(user?.items);
-        }
-        git()
-      }, [])
-  }
+  useEffect(() => {
+    const git = async () => {
+      const user = await getUsers(github);
+      setGitUser(user?.items);
+    }
+    git()
+  }, [])
 
   return <div className={`border-2 border-sky-500 rounded-[30px] p-4 md:p-8 mb-8`}>
     <div className='sm:flex'>

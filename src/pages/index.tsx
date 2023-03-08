@@ -6,8 +6,7 @@ import Form from '@/components/Form/Form'
 import List from '@/components/List/List'
 
 export default function Home() {
-  const [form, setForm] = useState(false)
-  const [editForm, setEditForm] = useState(false)
+  const [form, setForm] = useState<boolean>(false)
   return <>
     <Head>
       <title>Rocket App</title>

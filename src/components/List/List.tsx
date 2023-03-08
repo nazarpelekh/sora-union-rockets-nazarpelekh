@@ -5,7 +5,7 @@ import useFetchRockets from '@/utils/fetchData'
 import { doc, getDoc, setDoc, deleteField } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
-export default function List({ setForm }: any) {
+export default function List({ setForm }: React.SetStateAction<any>) {
 
   const { loading, error, data, setData } = useFetchRockets()
 
@@ -30,7 +30,7 @@ export default function List({ setForm }: any) {
       <h2 className={`text-xl font-bold`}>&#128640; List of Rockets</h2>
       <button
         className={`text-[40px] leading-[1]`}
-        onClick={() => setForm((state: any) => state = !state)}
+        onClick={() => setForm((state: React.SetStateAction<any>) => state = !state)}
       >
         +
       </button>

@@ -5,7 +5,9 @@ import useFetchRockets from '@/utils/fetchData'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../../../firebase'
 
-export default function Form({ setForm }:any) {
+import { iUser } from '@/types'
+
+export default function Form({ setForm }: React.SetStateAction<any>) {
 
   const [formData, setFormData] = useState({
     title: '',
@@ -22,9 +24,9 @@ export default function Form({ setForm }:any) {
     setUsers(user?.items);
   };
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.SetStateAction<any>) => {
     const { name, value } = event.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
+    setFormData((prev: React.SetStateAction<any>) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -53,7 +55,7 @@ export default function Form({ setForm }:any) {
 
     setFormData({ title: '', name: '', github: '', description: '' });
     setUsers([])
-    setForm((state:any) => state = !state)
+    setForm((state: React.SetStateAction<any>) => state = !state)
 
   }
 
@@ -121,10 +123,10 @@ export default function Form({ setForm }:any) {
             id='gituser'
             className='bg-transparent text-white outline-0 w-full h-[50px] border-b-2'
             defaultValue={formData.github}
-            onChange={e => setFormData((prev: any) => ({ ...prev, github: e.target.value }))}
-            onClick={(e: any) => setFormData((prev: any) => ({ ...prev, github: e.target.value }))}
+            onChange={e => setFormData((prev: React.SetStateAction<any>) => ({ ...prev, github: e.target.value }))}
+            onClick={(e: React.SetStateAction<any>) => setFormData((prev: React.SetStateAction<any>) => ({ ...prev, github: e.target.value }))}
           >
-            {users.map((user: any) => (
+            {users.map((user: iUser) => (
               <option
                 key={user.id}
                 value={user.login}
@@ -162,7 +164,7 @@ export default function Form({ setForm }:any) {
         <button
           type="reset"
           className="text-red-500 hover:bg-red-700 hover:text-white font-bold py-2 px-4 rounded-[10px] focus:outline-none focus:shadow-outline w-full"
-          onClick={() => setForm((state: any) => state = !state)}
+          onClick={() => setForm((state: React.SetStateAction<any>) => state = !state)}
         >
           Cancel
         </button>
